@@ -4,17 +4,8 @@
   </head>
   <body>
     <object>
-        <embed src="example.swf" width="550" height="400" />
+        <embed src="example.swf" />
     </object>
-    <script>
-      window.RufflePlayer = window.RufflePlayer || {};
-      window.addEventListener("load", (event) => {
-        const ruffle = window.RufflePlayer.newest();
-        const player = ruffle.createPlayer();
-        const container = document.getElementById("container");
-        container.appendChild(player);
-        player.ruffle().load("example.swf");
-      });
     </script>
 <script src="path/to/ruffle/ruffle.js"></script>
   </body>

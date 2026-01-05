@@ -3,21 +3,24 @@
     <title>Ruffle</title>
   </head>
   <body>
-    <script>
-      window.RufflePlayer = window.RufflePlayer || {};
-      let player = ruffle.createPlayer();
-      player.ruffle().config = {
-        autoplay: "auto",
-        // and so on...
-        };
-      window.addEventListener("load", (event) => {
-        const ruffle = window.RufflePlayer.newest();
-        const player = ruffle.createPlayer();
-        const container = document.getElementById("container");
-        container.appendChild(player);
-        player.ruffle().load("example.swf");
-      });
-    </script>
-    <script src="path/to/ruffle/ruffle.js"></script>
+    <body>
+        <div id='ruffle'></div>
+        <script src='https://unpkg.com/@ruffle-rs/ruffle'></script>
+        <script>
+var swfobject = {};
+
+swfobject.embedSWF = function(url, cont, width, height){
+    var ruffle = window.RufflePlayer.newest(),
+        player = Object.assign(document.getElementById(cont).appendChild(ruffle.createPlayer()), {
+            width: width,
+            height: height,
+            style: 'width: ' + width + 'px; height: ' + height + 'px',
+        });
+    
+    player.load({ url: url });
+}
+
+swfobject.embedSWF('example.swf', 'ruffle', 500, 500);
+        </script>
   </body>
 </html>
